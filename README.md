@@ -1,6 +1,6 @@
 # Parquet.Net multithreaded writing
 
-These are examples and benchmarks of writing to a single parquet file from multiple threads using the C# Parquet.Net library.
+These are examples and benchmarks of writing to a single parquet file from multiple threads using the C# [Parquet.Net](https://github.com/aloneguid/parquet-dotnet) library.
 
 ## Benchmarks
 
