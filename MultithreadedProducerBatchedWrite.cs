@@ -28,7 +28,6 @@ namespace ParquetMultiThreaded
             #pragma warning restore 4014
 
             await consumerTask;
-            await fileStream.FlushAsync();
             stopwatch.Stop();
 
             Console.WriteLine("Done");
