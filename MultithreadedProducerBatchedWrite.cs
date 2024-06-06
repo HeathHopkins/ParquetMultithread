@@ -51,7 +51,7 @@ namespace ParquetMultiThreaded
             await fileStream.FlushAsync(cancellationToken);
         }
 
-        static async Task ProducerAsync(BatchBlock<Item> target, int maxDegreeOfParallelism)
+        static async Task ProducerAsync(BatchBlock<Item> batchBlock, int maxDegreeOfParallelism)
         {
             var parallelOptions = new ParallelOptions { MaxDegreeOfParallelism = maxDegreeOfParallelism };
             var indexes = Enumerable.Range(0, 1000);
@@ -62,14 +62,14 @@ namespace ParquetMultiThreaded
                 // simulate work
                 await Task.Delay(TimeSpan.FromMilliseconds(500), cancellationToken);
 
-                target.Post(new Item
+                batchBlock.Post(new Item
                 {
                     index = index,
                     name = $"item {index}"
                 });
             });
 
-            target.Complete();
+            batchBlock.Complete();
         }
 
         public record Item
